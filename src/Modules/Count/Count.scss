@@ -1,0 +1,56 @@
+.Count {
+  margin: 5px;
+  width: 11rem;
+  display: flex;
+  justify-content: space-between;
+
+  .counter {
+    display: flex;
+
+    #plus {
+      border-top-left-radius: 15px;
+      border-bottom-left-radius: 15px;
+      width: 1.5rem;
+      height: 1.5rem;
+      font-weight: bold;
+      color: #111827;
+      background-color: #e5e7eb;
+      text-align: center;
+      line-height: 1.5rem;
+      cursor: pointer;
+    }
+
+    #minus {
+      border-top-right-radius: 15px;
+      border-bottom-right-radius: 15px;
+      width: 1.5rem;
+      height: 1.5rem;
+      font-weight: bold;
+      color: #111827;
+      background-color: #e5e7eb;
+      text-align: center;
+      line-height: 1.5rem;
+      cursor: pointer;
+    }
+
+    #number {
+      border: 0.1rem solid #e5e7eb;
+      width: 3rem;
+      height: 1.3rem;
+      text-align: center;
+      line-height: 1.3rem;
+    }
+  }
+
+  .orderBtn {
+    background-color: #111827;
+    width: 60px;
+    height: 1.5rem;
+    border-radius: 15px;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.5rem;
+    font-size: 0.8rem;
+  }
+}
