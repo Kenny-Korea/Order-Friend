@@ -11,7 +11,7 @@ const Modal = ({ modal, setModal }) => {
   return (
     <>
       <div className="Modal">
-        <div className="content">주문이 완료되었습니다</div>
+        <div className="content">Your order has been made</div>
       </div>
     </>
   );

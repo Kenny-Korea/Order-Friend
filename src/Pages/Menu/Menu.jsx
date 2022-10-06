@@ -6,128 +6,130 @@ import { useState, useEffect, useRef } from "react";
 import Sidebar from "../../Modules/Sidebar/Sidebar";
 import Navbar from "../../Modules/Navbar/Navbar";
 import Count from "../../Modules/Count/Count";
-import Modal from "../../Modules/Modal/Modal";
 
-const Menu = () => {
-  const [fetchedData, setFetchedData] = useState([]);
-  const [cart, setCart] = useState([]);
-  const [modal, setModal] = useState(false);
+const Menu = ({
+  fetchedData,
+  setFetchedData,
+  cart,
+  setCart,
+  keyword,
+  setKeyword,
+  breakfastRef,
+  lunchRef,
+  dinnerRef,
+  sidesRef,
+  beveragesRef,
+  liquorsRef,
+  othersRef,
+}) => {
   const navigate = useNavigate();
-
-  const breakfastRef = useRef();
-  const lunchRef = useRef();
-  const dinnerRef = useRef();
-  const sidesRef = useRef();
-  const beveragesRef = useRef();
-  const liquorsRef = useRef();
-  const othersRef = useRef();
-  console.log(cart);
-
-  useEffect(() => {
-    axios
-      .get(
-        "https://raw.githubusercontent.com/Kenny-Korea/json-repository/main/Menu"
-      )
-      .then((res) => {
-        setFetchedData(res.data);
-      });
-  }, []);
 
   const onClickMenu = (e) => {
     navigate(e.target.id);
   };
 
+  // menuAvailability에 따라 조건에 맞는 메뉴만 리턴할 수 있도록 하는 함수
+  const onReturnMenu = (element, category, keyword) => {
+    if (element.menuAvailability.includes(category) && !keyword) {
+      return (
+        <div className="item" key={element.menuIdx}>
+          <img
+            src={element.menuImage}
+            alt={element.menuTitle}
+            className="image"
+            id={element.menuIdx}
+            onClick={onClickMenu}
+          />
+          <div className="middle">
+            <span className="title">{element.menuTitle}</span>
+            <span className="price">$ {element.menuPrice}</span>
+          </div>
+          <Count
+            menuInfo={[element.menuIdx, element.menuTitle, element.menuCount]}
+            cart={cart}
+            setCart={setCart}
+          />
+        </div>
+      );
+    } else if (element.menuAvailability.includes(category) && keyword) {
+      if (element.menuTitle.includes(keyword)) {
+        return (
+          <div className="item" key={element.menuIdx}>
+            <img
+              src={element.menuImage}
+              alt={element.menuTitle}
+              className="image"
+              id={element.menuIdx}
+              onClick={onClickMenu}
+            />
+            <div className="middle">
+              <span className="title">{element.menuTitle}</span>
+              <span className="price">$ {element.menuPrice}</span>
+            </div>
+            <Count
+              menuInfo={[element.menuIdx, element.menuTitle, element.menuCount]}
+              cart={cart}
+              setCart={setCart}
+            />
+          </div>
+        );
+      } else {
+        return;
+      }
+    }
+  };
+
   return (
     <>
       <div className="Menu">
-        <div className="left">
-          <Sidebar
-            breakfastRef={breakfastRef}
-            lunchRef={lunchRef}
-            dinnerRef={dinnerRef}
-            sidesRef={sidesRef}
-            beveragesRef={beveragesRef}
-            liquorsRef={liquorsRef}
-            othersRef={othersRef}
-            cart={cart}
-            setCart={setCart}
-            modal={modal}
-            setModal={setModal}
-          />
+        <div className="category" ref={breakfastRef}>
+          Breakfast (06:00am ~ 11:00am)
         </div>
-        <div className="right">
-          {modal ? <Modal modal={modal} setModal={setModal} /> : null}
-
-          <Navbar />
-          <div className="category" ref={breakfastRef}>
-            Breakfast (06:00am ~ 11:00am)
+        {Array.isArray(fetchedData) && fetchedData.length === 0 ? null : (
+          <div className="items" id="breakfast">
+            {fetchedData.map((a, i) => {
+              return onReturnMenu(a, "breakfast", keyword);
+            })}
           </div>
-          {Array.isArray(fetchedData) && fetchedData.length === 0 ? null : (
-            <div className="items">
-              {fetchedData.map((a, i) => {
-                return (
-                  <div className="item" key={a.menuIdx}>
-                    <img
-                      src={a.menuImage}
-                      alt="pp"
-                      className="image"
-                      id={a.menuIdx}
-                      onClick={onClickMenu}
-                    />
-                    <div className="middle">
-                      <span className="title">{a.menuTitle}</span>
-                      <span className="price">$ {a.menuPrice}</span>
-                    </div>
-                    <Count
-                      menuInfo={[a.menuIdx, a.menuTitle]}
-                      cart={cart}
-                      setCart={setCart}
-                    />
-                  </div>
-                );
-              })}
-            </div>
-          )}
-          <div className="category" ref={lunchRef}>
-            Lunch
+        )}
+        <div className="category" ref={lunchRef}>
+          Lunch
+        </div>
+        {Array.isArray(fetchedData) && fetchedData.length === 0 ? null : (
+          <div className="items" id="lunch">
+            {fetchedData.map((a, i) => {
+              return onReturnMenu(a, "lunch", keyword);
+            })}
           </div>
-          {Array.isArray(fetchedData) && fetchedData.length === 0 ? null : (
-            <div className="items">
-              {fetchedData.map((a, i) => {
-                return (
-                  <div className="item" key={a.menuIdx}>
-                    <img
-                      src={a.menuImage}
-                      alt="pp"
-                      className="image"
-                      id={a.menuIdx}
-                      onClick={onClickMenu}
-                    />
-                    <div className="middle">
-                      <span className="title">{a.menuTitle}</span>
-                      <span className="price">${a.menuPrice}</span>
-                    </div>
-                    <span className="content">{a.menuContent}</span>
-                  </div>
-                );
-              })}
-            </div>
-          )}
-          <div className="category" ref={dinnerRef}>
-            Dinner
+        )}
+        <div className="category" ref={dinnerRef}>
+          Dinner
+        </div>
+        {Array.isArray(fetchedData) && fetchedData.length === 0 ? null : (
+          <div className="items" id="dinner">
+            {fetchedData.map((a, i) => {
+              return onReturnMenu(a, "dinner", keyword);
+            })}
           </div>
-          <div className="category" ref={sidesRef}>
-            Sides
+        )}
+        <div className="category" ref={sidesRef}>
+          Sides
+        </div>
+        {Array.isArray(fetchedData) && fetchedData.length === 0 ? null : (
+          <div className="items" id="sides">
+            {fetchedData.map((a, i) => {
+              return onReturnMenu(a, "sides", keyword);
+            })}
           </div>
-          <div className="category" ref={beveragesRef}>
-            Beverages
-          </div>
-          <div className="category" ref={liquorsRef}>
-            Liquors
-          </div>
-          <div className="category" ref={othersRef}>
-            Others
-          </div>
+        )}
+        <div className="category" ref={beveragesRef}>
+          Beverages
+        </div>
+        <div className="category" ref={liquorsRef}>
+          Liquors
+        </div>
+        <div className="category" ref={othersRef}>
+          Others
         </div>
       </div>
     </>

@@ -21,6 +21,8 @@ const Sidebar = ({
   setCart,
   modal,
   setModal,
+  setFetchedData,
+  rawData,
 }) => {
   const onClickCategory = (e) => {
     switch (e.target.id) {
@@ -54,6 +56,8 @@ const Sidebar = ({
     if (Array.isArray(cart) && cart.length !== 0) {
       setModal(!modal);
       setCart([]);
+      let copy = [...rawData];
+      setFetchedData(copy);
     }
   };
 
@@ -106,7 +110,7 @@ const Sidebar = ({
           </li>
         </ul>
         <div className="cart">
-          <span id="cartList">Cart List</span>
+          <span id="cartList">- Cart List -</span>
           {cart.map((a, i) => {
             return (
               <div className="cartItem" key={a.id}>

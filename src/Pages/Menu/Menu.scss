@@ -1,67 +1,61 @@
 .Menu {
   display: flex;
-  width: 98vw;
+  flex-direction: column;
+  width: 98vh;
   background-color: #e5e7eb;
 
-  .left {
+  .category {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #111827;
+    margin: 1rem 0.5rem 0.5rem 2rem;
   }
 
-  .right {
+  .items {
+    margin-left: 1rem;
     width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 
-    .category {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #111827;
-      margin: 1rem 0.5rem 0.5rem 2rem;
-    }
+    .item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 12rem;
+      height: 14rem;
+      -webkit-box-shadow: 7px 7px 6px -1px rgba(0, 0, 0, 0.7);
+      box-shadow: 7px 7px 6px -1px rgba(0, 0, 0, 0.2);
+      border-radius: 3px;
+      margin: 0.5rem;
+      border: 2px solid #e1e2e3;
+      background-color: #fff;
 
-    .items {
-      margin-left: 1rem;
-      width: 100%;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      .image {
+        margin: 10px;
+        border-radius: 5px;
+        width: 11rem;
+        height: 8rem;
+      }
 
-      .item {
+      .content {
+      }
+
+      .middle {
+        padding: 5px;
+        width: 11rem;
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 12rem;
-        height: 14rem;
-        -webkit-box-shadow: 7px 7px 6px -1px rgba(0, 0, 0, 0.7);
-        box-shadow: 7px 7px 6px -1px rgba(0, 0, 0, 0.2);
-        border-radius: 3px;
-        margin: 0.5rem;
-        border: 2px solid #e1e2e3;
-        background-color: #fff;
+        justify-content: space-between;
 
-        .image {
-          margin: 10px;
-          border-radius: 5px;
-          width: 11rem;
-          height: 8rem;
+        .title {
+          color: #001f3f;
+          font-weight: 600;
+          font-size: 1rem;
         }
 
-        .content {
-        }
-
-        .middle {
-          padding: 5px;
-          width: 11rem;
-          display: flex;
-          justify-content: space-between;
-
-          .title {
-            color: #001f3f;
-            font-weight: 600;
-            font-size: 1rem;
-          }
-
-          .price {
-            color: #ff4136;
-            font-weight: 600;
-            font-size: 1rem;
-          }
+        .price {
+          color: #ff4136;
+          font-weight: 600;
+          font-size: 1rem;
         }
       }
     }

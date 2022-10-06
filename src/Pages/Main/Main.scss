@@ -1,18 +1,15 @@
 .Main {
-  .mode {
+  display: flex;
+  width: 100vw;
+  background-color: #e5e7eb;
+
+  .left {
+    width: 12rem;
+  }
+
+  .right {
+    width: 1000px;
     display: flex;
-    justify-content: space-between;
-    width: 500px;
-    height: 300px;
-
-    .client {
-      background-color: #7697a0;
-      color: #fff;
-    }
-
-    .admin {
-      background-color: #e1e2e3;
-      color: black;
-    }
+    flex-direction: column;
   }
 }

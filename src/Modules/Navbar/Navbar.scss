@@ -5,14 +5,21 @@ hr {
 
 .Navbar {
   display: flex;
+  position: sticky;
+  top: 0px;
+  left: 0px;
   justify-content: space-between;
   align-items: center;
+  background-color: #e5e7eb;
   width: 100%;
   height: 5rem;
+  border-bottom: 1px solid lightgray;
 
   .search_items {
     height: 3rem;
     display: flex;
+    justify-content: center;
+    align-items: center;
 
     .search {
       outline: none;
@@ -28,6 +35,7 @@ hr {
 
     .button {
       width: 3rem;
+      height: 2.4rem;
       border-top-right-radius: 1.5rem;
       border-bottom-right-radius: 1.5rem;
       display: flex;
@@ -44,5 +52,6 @@ hr {
     align-items: center;
     gap: 2rem;
     font-size: 6rem;
+    margin-right: 2rem;
   }
 }
