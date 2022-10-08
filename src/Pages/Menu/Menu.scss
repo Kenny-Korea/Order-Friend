@@ -1,7 +1,7 @@
 .Menu {
   display: flex;
   flex-direction: column;
-  width: 98vh;
+  width: 100%;
   background-color: #e5e7eb;
 
   .category {
@@ -16,6 +16,8 @@
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    justify-items: center;
 
     .item {
       display: flex;

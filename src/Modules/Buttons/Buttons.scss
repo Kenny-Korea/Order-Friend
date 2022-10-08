@@ -1,0 +1,30 @@
+.availability {
+  width: 6rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+#breakfastBtn {
+  color: #ff4136;
+  border: 2px solid #ff4136;
+}
+
+#lunchBtn {
+  color: #3d9970;
+  border: 2px solid #3d9970;
+}
+
+#dinnerBtn {
+  color: #0074d9;
+  border: 2px solid #0074d9;
+}
+
+#sidesBtn {
+  color: #b10dc9;
+  border: 2px solid #b10dc9;
+}

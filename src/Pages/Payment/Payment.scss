@@ -1,0 +1,84 @@
+.Payment {
+  width: 100%;
+
+  .top {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .table {
+      width: 80%;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+
+      #thead {
+        font-weight: 600;
+      }
+      .row {
+        height: 3.5rem;
+        border-bottom: 1px solid #111827;
+        display: flex;
+        align-items: center;
+        width: 100%;
+
+        .menu {
+          width: 50%;
+        }
+
+        .count {
+          width: 10%;
+          text-align: right;
+        }
+
+        .price {
+          width: 20%;
+          text-align: right;
+        }
+
+        .totalPrice {
+          width: 20%;
+          text-align: right;
+        }
+      }
+    }
+
+    .sum {
+      width: 80%;
+      display: flex;
+      flex-direction: row;
+      text-align: right;
+      justify-content: flex-end;
+      color: #ff4136;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+    }
+  }
+
+  .bottom {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      width: 8rem;
+      height: 8rem;
+      background-color: #fff;
+      border-radius: 0.2rem;
+      -webkit-box-shadow: 7px 7px 6px -1px rgba(0, 0, 0, 0.7);
+      box-shadow: 7px 7px 6px -1px rgba(0, 0, 0, 0.2);
+
+      img {
+        width: 4rem;
+        height: 4rem;
+      }
+    }
+  }
+}

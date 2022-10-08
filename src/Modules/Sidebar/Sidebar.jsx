@@ -8,6 +8,7 @@ import LocalDrinkOutlinedIcon from "@mui/icons-material/LocalDrinkOutlined";
 import SportsBarOutlinedIcon from "@mui/icons-material/SportsBarOutlined";
 import PanToolOutlinedIcon from "@mui/icons-material/PanToolOutlined";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = ({
   breakfastRef,
@@ -19,11 +20,27 @@ const Sidebar = ({
   othersRef,
   cart,
   setCart,
+  orderedList,
+  setOrderedList,
   modal,
   setModal,
+  modalContent,
+  setModalContent,
   setFetchedData,
   rawData,
+  keywordRef,
+  setKeyword,
 }) => {
+  const navigate = useNavigate();
+
+  // 로고 클릭 시 메뉴로 이동
+  const onClickLogo = () => {
+    keywordRef.current.value = "";
+    setKeyword(keywordRef.current.value);
+    navigate("/menu");
+  };
+
+  // 카테고리 클릭 시 해당 메뉴 항목으로 스크롤
   const onClickCategory = (e) => {
     switch (e.target.id) {
       case "breakfast":
@@ -52,9 +69,13 @@ const Sidebar = ({
     }
   };
 
+  // 주문 버튼 클릭
   const onClickOrder = () => {
     if (Array.isArray(cart) && cart.length !== 0) {
+      setModalContent("addToCart");
       setModal(!modal);
+      // 그냥 orderedList에 push 하게 되면 Array 안에 Array가 들어가게 되므로 아래와 같이 선언
+      setOrderedList([...orderedList, ...cart]);
       setCart([]);
       let copy = [...rawData];
       setFetchedData(copy);
@@ -64,7 +85,7 @@ const Sidebar = ({
   return (
     <>
       <div className="Sidebar">
-        <span>Kenny Resto</span>
+        <span onClick={onClickLogo}>Kenny Resto</span>
         <ul className="lists">
           <li id="breakfast" onClick={onClickCategory}>
             <BreakfastDiningOutlinedIcon />

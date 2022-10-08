@@ -1,0 +1,12 @@
+.Hamburger {
+  width: 10rem;
+  height: 12rem;
+  background-color: aqua;
+
+  .listItem {
+    width: 10rem;
+    height: 4rem;
+    background-color: beige;
+    border: 1px solid black;
+  }
+}

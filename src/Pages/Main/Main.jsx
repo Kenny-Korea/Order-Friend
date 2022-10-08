@@ -1,18 +1,20 @@
 import React from "react";
 import "./Main.scss";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import Sidebar from "../../Modules/Sidebar/Sidebar";
 import Navbar from "../../Modules/Navbar/Navbar";
-import Menu from "../../Pages/Menu/Menu";
+import Menu from "../Menu/Menu";
 import Modal from "../../Modules/Modal/Modal";
 
 const Main = () => {
   const [rawData, setRawData] = useState([]);
   const [fetchedData, setFetchedData] = useState([]);
   const [cart, setCart] = useState([]);
+  const [orderedList, setOrderedList] = useState([]);
   const [modal, setModal] = useState(false);
+  const [modalContent, setModalContent] = useState("");
   const [keyword, setKeyword] = useState("");
 
   const breakfastRef = useRef();
@@ -22,6 +24,7 @@ const Main = () => {
   const beveragesRef = useRef();
   const liquorsRef = useRef();
   const othersRef = useRef();
+  const keywordRef = useRef();
 
   useEffect(() => {
     axios
@@ -38,7 +41,9 @@ const Main = () => {
   return (
     <>
       <div className="Main">
-        {modal ? <Modal modal={modal} setModal={setModal} /> : null}
+        {modal ? (
+          <Modal modal={modal} setModal={setModal} type={modalContent} />
+        ) : null}
         <div className="left">
           <Sidebar
             breakfastRef={breakfastRef}
@@ -50,28 +55,45 @@ const Main = () => {
             othersRef={othersRef}
             cart={cart}
             setCart={setCart}
+            orderedList={orderedList}
+            setOrderedList={setOrderedList}
             modal={modal}
             setModal={setModal}
+            modalContent={modalContent}
+            setModalContent={setModalContent}
             setFetchedData={setFetchedData}
             rawData={rawData}
+            setKeyword={setKeyword}
+            keywordRef={keywordRef}
           />
         </div>
         <div className="right">
-          <Navbar keyword={keyword} setKeyword={setKeyword} />
-          <Menu
-            fetchedData={fetchedData}
-            setFetchedData={setFetchedData}
-            cart={cart}
-            setCart={setCart}
+          <Navbar
             keyword={keyword}
             setKeyword={setKeyword}
-            breakfastRef={breakfastRef}
-            lunchRef={lunchRef}
-            dinnerRef={dinnerRef}
-            sidesRef={sidesRef}
-            beveragesRef={beveragesRef}
-            liquorsRef={liquorsRef}
-            othersRef={othersRef}
+            keywordRef={keywordRef}
+            orderedList={orderedList}
+          />
+          <Outlet
+            context={{
+              fetchedData,
+              setFetchedData,
+              cart,
+              setCart,
+              orderedList,
+              keyword,
+              setKeyword,
+              breakfastRef,
+              lunchRef,
+              dinnerRef,
+              sidesRef,
+              beveragesRef,
+              liquorsRef,
+              othersRef,
+              modal,
+              setModal,
+              setModalContent,
+            }}
           />
         </div>
       </div>

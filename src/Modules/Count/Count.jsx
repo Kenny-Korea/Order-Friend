@@ -20,7 +20,9 @@ const Count = ({ menuInfo, cart, setCart }) => {
         id: menuInfo[0],
         name: menuInfo[1],
         count: numberRef.current.value,
+        price: menuInfo[3],
       });
+      console.log(menuInfo[3]);
       setCart(copy);
     }
   };

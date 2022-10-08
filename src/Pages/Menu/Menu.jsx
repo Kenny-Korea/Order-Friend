@@ -1,31 +1,29 @@
 import React from "react";
 import "./Menu.scss";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
-import Sidebar from "../../Modules/Sidebar/Sidebar";
-import Navbar from "../../Modules/Navbar/Navbar";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import Count from "../../Modules/Count/Count";
 
-const Menu = ({
-  fetchedData,
-  setFetchedData,
-  cart,
-  setCart,
-  keyword,
-  setKeyword,
-  breakfastRef,
-  lunchRef,
-  dinnerRef,
-  sidesRef,
-  beveragesRef,
-  liquorsRef,
-  othersRef,
-}) => {
+const Menu = () => {
+  const {
+    fetchedData,
+    setFetchedData,
+    cart,
+    setCart,
+    keyword,
+    setKeyword,
+    breakfastRef,
+    lunchRef,
+    dinnerRef,
+    sidesRef,
+    beveragesRef,
+    liquorsRef,
+    othersRef,
+  } = useOutletContext();
   const navigate = useNavigate();
 
   const onClickMenu = (e) => {
-    navigate(e.target.id);
+    let id = e.target.id;
+    navigate(`/menu/${id}`);
   };
 
   // menuAvailability에 따라 조건에 맞는 메뉴만 리턴할 수 있도록 하는 함수
@@ -45,7 +43,12 @@ const Menu = ({
             <span className="price">$ {element.menuPrice}</span>
           </div>
           <Count
-            menuInfo={[element.menuIdx, element.menuTitle, element.menuCount]}
+            menuInfo={[
+              element.menuIdx,
+              element.menuTitle,
+              element.menuCount,
+              element.menuPrice,
+            ]}
             cart={cart}
             setCart={setCart}
           />
@@ -67,7 +70,12 @@ const Menu = ({
               <span className="price">$ {element.menuPrice}</span>
             </div>
             <Count
-              menuInfo={[element.menuIdx, element.menuTitle, element.menuCount]}
+              menuInfo={[
+                element.menuIdx,
+                element.menuTitle,
+                element.menuCount,
+                element.menuPrice,
+              ]}
               cart={cart}
               setCart={setCart}
             />
