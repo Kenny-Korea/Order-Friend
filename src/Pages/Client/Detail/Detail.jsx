@@ -1,6 +1,11 @@
 import React from "react";
 import { useOutletContext, useParams } from "react-router-dom";
-import { breakfast, dinner, lunch, sides } from "../../Modules/Buttons/Buttons";
+import {
+  breakfast,
+  dinner,
+  lunch,
+  sides,
+} from "../../../Modules/Buttons/Buttons";
 import "./Detail.scss";
 
 const Detail = () => {

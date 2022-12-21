@@ -7,8 +7,9 @@ import BakeryDiningOutlinedIcon from "@mui/icons-material/BakeryDiningOutlined";
 import LocalDrinkOutlinedIcon from "@mui/icons-material/LocalDrinkOutlined";
 import SportsBarOutlinedIcon from "@mui/icons-material/SportsBarOutlined";
 import PanToolOutlinedIcon from "@mui/icons-material/PanToolOutlined";
-import { useState } from "react";
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import { useNavigate } from "react-router-dom";
+import { sidebarWords } from "../../languages";
 
 const Sidebar = ({
   breakfastRef,
@@ -30,6 +31,7 @@ const Sidebar = ({
   rawData,
   keywordRef,
   setKeyword,
+  language,
 }) => {
   const navigate = useNavigate();
 
@@ -82,6 +84,16 @@ const Sidebar = ({
     }
   };
 
+  // 선택 메뉴 삭제
+  const handleRemoveItem = (id) => {
+    setCart(cart.filter((item) => item.id !== id));
+    // ! count를 0으로 초기화 해줘야 오류 발생하지 않음
+    let copy = [...rawData];
+    setFetchedData(copy);
+  };
+
+  console.log(language);
+
   return (
     <>
       <div className="Sidebar">
@@ -90,59 +102,73 @@ const Sidebar = ({
           <li id="breakfast" onClick={onClickCategory}>
             <BreakfastDiningOutlinedIcon />
             <span id="breakfast" onClick={onClickCategory}>
-              Breakfast
+              {sidebarWords[0].language[language]}
             </span>
           </li>
           <li id="lunch" onClick={onClickCategory}>
             <LunchDiningOutlinedIcon />
             <span id="lunch" onClick={onClickCategory}>
-              Lunch
+              {sidebarWords[1].language[language]}
             </span>
           </li>
           <li id="dinner" onClick={onClickCategory}>
             <RestaurantOutlinedIcon />
             <span id="dinner" onClick={onClickCategory}>
-              Dinner
+              {sidebarWords[2].language[language]}
             </span>
           </li>
           <li id="sides" onClick={onClickCategory}>
             <BakeryDiningOutlinedIcon />
             <span id="sides" onClick={onClickCategory}>
-              Sides
+              {sidebarWords[3].language[language]}
             </span>
           </li>
           <li id="beverages" onClick={onClickCategory}>
             <LocalDrinkOutlinedIcon />
             <span id="beverages" onClick={onClickCategory}>
-              Beverages
+              {sidebarWords[4].language[language]}
             </span>
           </li>
           <li id="liquors" onClick={onClickCategory}>
             <SportsBarOutlinedIcon />
             <span id="liquors" onClick={onClickCategory}>
-              Liquors
+              {sidebarWords[5].language[language]}
             </span>
           </li>
           <li id="others" onClick={onClickCategory}>
             <PanToolOutlinedIcon />
             <span id="others" onClick={onClickCategory}>
-              Others
+              {sidebarWords[6].language[language]}
             </span>
           </li>
         </ul>
         <div className="cart">
-          <span id="cartList">- Cart List -</span>
-          {cart.map((a, i) => {
+          <span id="cartList">- {sidebarWords[7].language[language]} -</span>
+          {cart.map((item) => {
             return (
-              <div className="cartItem" key={a.id}>
-                <span>{a.name}</span>
-                <span>{a.count}</span>
+              <div className="cartItem" key={item.id}>
+                <div>
+                  <span>{item.name}</span>
+                  <span>{item.count}</span>
+                </div>
+                <HighlightOffIcon
+                  style={{
+                    fontSize: "large",
+                    marginLeft: "0.5rem",
+                    display: "flex",
+                    alignItems: "flex-end",
+                    justifyContent: "center",
+                  }}
+                  onClick={() => {
+                    handleRemoveItem(item.id);
+                  }}
+                />
               </div>
             );
           })}
         </div>
         <div className="orderBtn" onClick={onClickOrder}>
-          Order
+          {sidebarWords[8].language[language]}
         </div>
       </div>
     </>

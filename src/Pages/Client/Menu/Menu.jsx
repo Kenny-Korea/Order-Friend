@@ -1,7 +1,8 @@
 import React from "react";
 import "./Menu.scss";
 import { useNavigate, useOutletContext } from "react-router-dom";
-import Count from "../../Modules/Count/Count";
+import Count from "../../../Modules/Count/Count";
+import { sidebarWords } from "../../../languages";
 
 const Menu = () => {
   const {
@@ -18,9 +19,11 @@ const Menu = () => {
     beveragesRef,
     liquorsRef,
     othersRef,
+    language,
   } = useOutletContext();
   const navigate = useNavigate();
 
+  // 메뉴 클릭하면 Detail Page로 이동
   const onClickMenu = (e) => {
     let id = e.target.id;
     navigate(`/menu/${id}`);
@@ -30,7 +33,7 @@ const Menu = () => {
   const onReturnMenu = (element, category, keyword) => {
     if (element.menuAvailability.includes(category) && !keyword) {
       return (
-        <div className="item" key={element.menuIdx}>
+        <div className="item" key={element.menuIdx + category}>
           <img
             src={element.menuImage}
             alt={element.menuTitle}
@@ -57,7 +60,7 @@ const Menu = () => {
     } else if (element.menuAvailability.includes(category) && keyword) {
       if (element.menuTitle.includes(keyword)) {
         return (
-          <div className="item" key={element.menuIdx}>
+          <div className="item" key={element.menuIdx + category}>
             <img
               src={element.menuImage}
               alt={element.menuTitle}
@@ -91,53 +94,53 @@ const Menu = () => {
     <>
       <div className="Menu">
         <div className="category" ref={breakfastRef}>
-          Breakfast (06:00am ~ 11:00am)
+          {sidebarWords[0].language[language]} (06:00am ~ 11:00am)
         </div>
         {Array.isArray(fetchedData) && fetchedData.length === 0 ? null : (
           <div className="items" id="breakfast">
-            {fetchedData.map((a, i) => {
-              return onReturnMenu(a, "breakfast", keyword);
+            {fetchedData.map((menu) => {
+              return onReturnMenu(menu, "breakfast", keyword);
             })}
           </div>
         )}
         <div className="category" ref={lunchRef}>
-          Lunch
+          {sidebarWords[1].language[language]}
         </div>
         {Array.isArray(fetchedData) && fetchedData.length === 0 ? null : (
           <div className="items" id="lunch">
-            {fetchedData.map((a, i) => {
-              return onReturnMenu(a, "lunch", keyword);
+            {fetchedData.map((menu) => {
+              return onReturnMenu(menu, "lunch", keyword);
             })}
           </div>
         )}
         <div className="category" ref={dinnerRef}>
-          Dinner
+          {sidebarWords[2].language[language]}
         </div>
         {Array.isArray(fetchedData) && fetchedData.length === 0 ? null : (
           <div className="items" id="dinner">
-            {fetchedData.map((a, i) => {
-              return onReturnMenu(a, "dinner", keyword);
+            {fetchedData.map((menu) => {
+              return onReturnMenu(menu, "dinner", keyword);
             })}
           </div>
         )}
         <div className="category" ref={sidesRef}>
-          Sides
+          {sidebarWords[3].language[language]}
         </div>
         {Array.isArray(fetchedData) && fetchedData.length === 0 ? null : (
           <div className="items" id="sides">
-            {fetchedData.map((a, i) => {
-              return onReturnMenu(a, "sides", keyword);
+            {fetchedData.map((menu) => {
+              return onReturnMenu(menu, "sides", keyword);
             })}
           </div>
         )}
         <div className="category" ref={beveragesRef}>
-          Beverages
+          {sidebarWords[4].language[language]}
         </div>
         <div className="category" ref={liquorsRef}>
-          Liquors
+          {sidebarWords[5].language[language]}
         </div>
         <div className="category" ref={othersRef}>
-          Others
+          {sidebarWords[6].language[language]}
         </div>
       </div>
     </>

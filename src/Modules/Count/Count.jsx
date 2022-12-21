@@ -71,7 +71,7 @@ const Count = ({ menuInfo, cart, setCart }) => {
             -
           </div>
         </div>
-        <div className="orderBtn">Order</div>
+        {/* <div className="orderBtn">Order</div> */}
       </div>
     </>
   );

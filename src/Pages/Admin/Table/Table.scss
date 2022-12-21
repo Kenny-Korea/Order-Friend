@@ -1,0 +1,15 @@
+.Table {
+  table {
+    width: 30rem;
+    height: 30rem;
+    // 아래의 border-collapse를 설정해주지 않으면 tr의 border-bottom이 정상적으로 안먹힘
+    border-collapse: collapse;
+
+    tr {
+      border-bottom: 1px solid #111827;
+
+      td {
+      }
+    }
+  }
+}

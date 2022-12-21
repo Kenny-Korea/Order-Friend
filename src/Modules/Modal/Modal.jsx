@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
+import { modalWords } from "../../languages";
 import "./Modal.scss";
 
-const Modal = ({ modal, setModal, type }) => {
+const Modal = ({ modal, setModal, type, language }) => {
   if (modal) {
     let timeout = setTimeout(() => {
       clearTimeout(timeout);
@@ -12,13 +13,14 @@ const Modal = ({ modal, setModal, type }) => {
   const returnModalContent = () => {
     switch (type) {
       case "addToCart":
-        return "주문이 완료되었습니다";
+        return modalWords[0].language[language];
       case "payAtTheCounter":
-        return "카운터에서 직접 결제하시면 됩니다";
+        return modalWords[1].language[language];
       default:
         break;
     }
   };
+  console.log(modalWords[0].language[language]);
   return (
     <>
       <div className="Modal">

@@ -12,7 +12,7 @@ const Login = () => {
     if (e.target.className === "client") {
       navigate("/menu");
     } else {
-      navigate("/login");
+      navigate("/admin");
     }
   };
   return (

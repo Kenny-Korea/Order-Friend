@@ -1,15 +1,16 @@
 .Main {
   display: flex;
-  width: 100vw;
+  width: 99vw;
   background-color: #e5e7eb;
 
   .left {
-    width: 12rem;
+    width: 14rem;
   }
 
   .right {
-    width: 1000px;
+    width: 100%;
     display: flex;
     flex-direction: column;
+    padding-bottom: 2rem;
   }
 }

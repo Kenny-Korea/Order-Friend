@@ -3,10 +3,10 @@ import "./Main.scss";
 import axios from "axios";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
-import Sidebar from "../../Modules/Sidebar/Sidebar";
-import Navbar from "../../Modules/Navbar/Navbar";
+import Sidebar from "../../../Modules/Sidebar/Sidebar";
+import Navbar from "../../../Modules/Navbar/Navbar";
 import Menu from "../Menu/Menu";
-import Modal from "../../Modules/Modal/Modal";
+import Modal from "../../../Modules/Modal/Modal";
 
 const Main = () => {
   const [rawData, setRawData] = useState([]);
@@ -16,6 +16,7 @@ const Main = () => {
   const [modal, setModal] = useState(false);
   const [modalContent, setModalContent] = useState("");
   const [keyword, setKeyword] = useState("");
+  const [language, setLanguage] = useState(0);
 
   const breakfastRef = useRef();
   const lunchRef = useRef();
@@ -42,7 +43,12 @@ const Main = () => {
     <>
       <div className="Main">
         {modal ? (
-          <Modal modal={modal} setModal={setModal} type={modalContent} />
+          <Modal
+            modal={modal}
+            setModal={setModal}
+            type={modalContent}
+            language={language}
+          />
         ) : null}
         <div className="left">
           <Sidebar
@@ -65,6 +71,7 @@ const Main = () => {
             rawData={rawData}
             setKeyword={setKeyword}
             keywordRef={keywordRef}
+            language={language}
           />
         </div>
         <div className="right">
@@ -73,6 +80,8 @@ const Main = () => {
             setKeyword={setKeyword}
             keywordRef={keywordRef}
             orderedList={orderedList}
+            language={language}
+            setLanguage={setLanguage}
           />
           <Outlet
             context={{
@@ -93,6 +102,7 @@ const Main = () => {
               modal,
               setModal,
               setModalContent,
+              language,
             }}
           />
         </div>

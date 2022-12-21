@@ -5,7 +5,7 @@
   position: sticky;
   top: 0px;
   left: 0px;
-  width: 12rem;
+  width: 14rem;
   height: 99vh;
   background-color: #111827;
   text-align: center;
@@ -15,6 +15,7 @@
   padding-top: 0.5rem;
 
   .lists {
+    width: 80%;
     display: flex;
     flex-direction: column;
     margin: 0px;
@@ -23,7 +24,7 @@
 
     li {
       display: flex;
-      gap: 0.8rem;
+      gap: 1.2rem;
       padding: 0.5rem;
       list-style: none;
       font-weight: 500;
@@ -47,7 +48,7 @@
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
     margin-top: 2rem;
-    width: 11rem;
+    width: 13rem;
     height: 18rem;
     color: #111827;
     font-size: 1rem;
@@ -57,9 +58,17 @@
     }
 
     .cartItem {
-      width: 10rem;
+      width: 12rem;
       display: flex;
       justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.3rem;
+
+      div {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
     }
   }
 
@@ -67,7 +76,7 @@
     background-color: #45a29e;
     border-bottom-left-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
-    width: 11rem;
+    width: 13rem;
     height: 3rem;
     color: #fff;
     cursor: pointer;

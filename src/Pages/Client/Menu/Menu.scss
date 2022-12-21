@@ -12,7 +12,6 @@
   }
 
   .items {
-    margin-left: 1rem;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -37,9 +36,6 @@
         border-radius: 5px;
         width: 11rem;
         height: 8rem;
-      }
-
-      .content {
       }
 
       .middle {
