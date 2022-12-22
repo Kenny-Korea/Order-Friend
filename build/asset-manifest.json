@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.4374dba1.css",
+    "main.js": "/static/js/main.d6abb9d3.js",
+    "static/js/787.ae0cd389.chunk.js": "/static/js/787.ae0cd389.chunk.js",
+    "service-worker.js": "/service-worker.js",
+    "static/media/kakaopay.png": "/static/media/kakaopay.d58a30bd1d6403724f48.png",
+    "static/media/tosspay.png": "/static/media/tosspay.7a10134fc6d5d15c9f78.png",
+    "static/media/counter.svg": "/static/media/counter.e47e2420d51a68f3da40ad249b3d3698.svg",
+    "static/media/bank_transfer.svg": "/static/media/bank_transfer.77401412e71537f9672b69833ca04a89.svg",
+    "index.html": "/index.html",
+    "static/media/credit_card.svg": "/static/media/credit_card.8fe967b900647180fccdc675e3a45654.svg",
+    "main.4374dba1.css.map": "/static/css/main.4374dba1.css.map",
+    "main.d6abb9d3.js.map": "/static/js/main.d6abb9d3.js.map",
+    "787.ae0cd389.chunk.js.map": "/static/js/787.ae0cd389.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4374dba1.css",
+    "static/js/main.d6abb9d3.js"
+  ]
+}
