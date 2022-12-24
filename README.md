@@ -1,4 +1,4 @@
-# Kenny Resto
+# Order Friend
 
 태블릿을 이용한 식당 메뉴 주문 프로그램
 
